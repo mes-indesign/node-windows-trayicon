@@ -1,7 +1,7 @@
 {
 	"targets": [
 		{
-			"target_name": "addon",
+			"target_name": "node_windows_trayicon",
 			"conditions": [
         		['OS=="win"', {
 					"sources": [
@@ -18,6 +18,17 @@
 					}
 				}]
 			]
+		},
+		{
+			"target_name": "action_after_build",
+			"type": "none",
+			"dependencies": [ "node_windows_trayicon" ],
+			"copies": [
+				{
+					"files": [ "<(PRODUCT_DIR)/node_windows_trayicon.node" ],
+					"destination": "./lib/binding/"
+				}
+			],
 		}
 	]
 }
